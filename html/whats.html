@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number and Message Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin: 10px 0;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .submit-button {
+      display: block;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .submit-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Number and Message Form</h1>
+    <form action="http://3.111.150.109/cgi-bin/whatsapp.py?number&message" method="get">
+      <div class="form-group">
+        <label for="number">Number:</label>
+        <input type="number" name="number" id="number" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" rows="4" required></textarea>
+      </div>
+      <button class="submit-button" type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+

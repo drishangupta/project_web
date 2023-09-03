@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to bottom right, #ff9a8b, #5d26c1);
+      background-size: cover;
+    }
+    .container {
+      text-align: center;
+      background-color: rgba(255, 229, 180, 0.5);
+      width: 600px; /* Set a fixed width */
+      padding: 20px; /* Add padding for better spacing */
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(7px); /* Apply the blur effect */
+    }
+    .input-container {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #f9ca24;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #f0932b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+	  <h1>Your Feedback!</h1>
+    <form action="http://13.233.92.181/cgi-bin/feedbback.py?email&name&number&feedback" method="post">
+      <div class="input-container">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="input-container">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="input-container">
+        <label for="number">Phone Number:</label>
+        <input type="tel" id="number" name="number" required>
+      </div>
+      <div class="input-container">
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" required></textarea>
+      </div>
+      <button class="button" type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

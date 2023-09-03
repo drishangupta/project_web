@@ -1,0 +1,21 @@
+<script>
+    function lw(){
+        var xhr= new XMLHttpRequest;
+        var mycmd=document.getElementById("in1").value;
+        xhr.open("GET","http://13.233.92.181/cgi-bin/main.py?c="+mycmd,true);
+        xhr.send();
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4){
+                document.getElementById("p1").innerHTML=this.responseText;
+            }
+        }
+    }
+</script>
+<body>
+    Enter your Command <input id="in1" name="c"/>
+    <br>
+    <pre>
+    <p id="p1" >Any Commands including docker, You can use any linux command </p>
+    </pre>
+    <button onclick="lw()">click me</button>
+</body>
