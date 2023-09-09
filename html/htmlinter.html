@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live HTML Interpreter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #input {
+            width: 80%;
+            height: 200px;
+        }
+
+        #output {
+            width: 80%;
+            height: 200px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Live HTML Interpreter</h1>
+        <textarea id="input" placeholder="Enter HTML code here..."></textarea>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const inputTextarea = document.getElementById('input');
+        const outputDiv = document.getElementById('output');
+
+        inputTextarea.addEventListener('input', interpretCode);
+
+        function interpretCode() {
+            const inputCode = inputTextarea.value;
+            outputDiv.innerHTML = ''; // Clear previous output
+
+            try {
+                // Create a sandboxed iframe to execute the code
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+
+                // Write the code to the iframe
+                iframe.contentDocument.write(inputCode);
+                iframe.contentDocument.close();
+
+                // Copy the iframe's body content to the output
+                const iframeBody = iframe.contentDocument.body;
+                const clonedNode = iframeBody.cloneNode(true);
+                outputDiv.appendChild(clonedNode);
+
+                // Remove the iframe
+                document.body.removeChild(iframe);
+            } catch (error) {
+                outputDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
